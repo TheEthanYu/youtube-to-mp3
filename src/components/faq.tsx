@@ -30,7 +30,7 @@ export function FAQ() {
   }
 
   return (
-    <section className="section-spacing section-light">
+    <section className="py-16 bg-white">
       <div className="container-style">
         <div className="text-center mb-10">
           <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>
@@ -49,7 +49,7 @@ export function FAQ() {
                 className="w-full py-6 text-left flex items-center justify-between transition-colors"
                 style={{ color: 'var(--foreground)' }}
               >
-                <span className="text-base md:text-lg font-semibold pr-4">{faq.question}</span>
+                <h3 className="text-base md:text-lg font-semibold pr-4">{faq.question}</h3>
                 <ChevronDown 
                   className={`w-5 h-5 transition-transform ${
                     openIndex === index ? 'rotate-180' : ''

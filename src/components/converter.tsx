@@ -3,9 +3,8 @@
 import React, { useState, useCallback } from 'react'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
-import { Card, CardContent } from './ui/card'
-import { Download, Loader2, Music, AlertCircle, Play } from 'lucide-react'
-import { extractVideoId, isValidYouTubeUrl } from '@/lib/api'
+import { Download, Loader2, AlertCircle } from 'lucide-react'
+import { isValidYouTubeUrl } from '@/lib/api'
 import { debounce } from '@/lib/utils'
 
 interface ConversionState {
@@ -118,9 +117,9 @@ export function Converter() {
   return (
     <div className="card-style p-6 md:p-8 max-w-3xl mx-auto shadow-lg">
       <div className="text-center mb-6">
-        <h3 className="text-lg md:text-xl font-semibold mb-2" style={{ color: 'var(--foreground)' }}>
+        <label className="text-lg md:text-xl font-semibold mb-2 block" style={{ color: 'var(--foreground)' }}>
           Insert YouTube URL
-        </h3>
+        </label>
       </div>
 
         {/* URL Input */}

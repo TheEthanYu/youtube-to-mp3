@@ -44,7 +44,7 @@ export function isValidYouTubeUrl(url: string): boolean {
 }
 
 // Convert YouTube video to MP3
-export async function convertToMp3(videoId: string): Promise<ConvertResponse> {
+export async function convertToMp3(): Promise<ConvertResponse> {
   try {
     const response = await fetch(`${API_CONFIG.BASE_URL}/dl`, {
       method: 'GET',

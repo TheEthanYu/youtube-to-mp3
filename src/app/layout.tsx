@@ -9,7 +9,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "YouTube to MP3 - Free YouTube to MP3 Converter",
-  description: "Free YouTube to MP3 Converter - Convert YouTube videos to MP3 online. Fast, safe, and high-quality YouTube to MP3 conversion. No registration required.",
+  description: "Free YouTube to MP3 converter - Transform YouTube videos into high-quality MP3 files instantly. No registration, unlimited downloads, 320kbps audio quality.",
   authors: [{ name: "YouTube to MP3" }],
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
@@ -17,17 +17,27 @@ export const metadata: Metadata = {
     canonical: "https://www.youtubetomp3.art",
   },
   openGraph: {
-    title: "YouTube to MP3 - Free YouTube to MP3 Converter",
-    description: "Free YouTube to MP3 Converter - Convert YouTube videos to MP3 online instantly",
+    title: "YouTube to MP3",
+    description: "Convert YouTube videos to MP3 online instantly with our free, high-quality converter",
     url: "https://www.youtubetomp3.art",
     siteName: "YouTube to MP3",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "https://www.youtubetomp3.art/og.png",
+        width: 1200,
+        height: 630,
+        alt: "YouTube to MP3 Converter - Free Online Tool",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "YouTube to MP3 - Free YouTube to MP3 Converter",
-    description: "Free YouTube to MP3 Converter - Convert YouTube videos to MP3 online instantly",
+    title: "YouTube to MP3",
+    description: "Convert YouTube videos to MP3 online instantly with our free, high-quality converter",
+    site: "@TheEthanYu",
+    images: ["https://www.youtubetomp3.art/og.png"],
   },
   manifest: "/manifest.json",
   other: {
