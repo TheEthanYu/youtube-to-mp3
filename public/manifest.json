@@ -1,0 +1,18 @@
+{
+  "name": "YouTube to MP3 Converter",
+  "short_name": "YouTube2MP3",
+  "description": "Free YouTube to MP3 converter online",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0fdf4",
+  "theme_color": "#059669",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["multimedia", "utilities"],
+  "lang": "en"
+}

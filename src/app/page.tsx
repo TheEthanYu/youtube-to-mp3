@@ -1,57 +1,69 @@
 import { Header } from '@/components/header'
 import { Converter } from '@/components/converter'
-import { Features } from '@/components/features'
 import { Instructions } from '@/components/instructions'
-import { BlogSection } from '@/components/blog-section'
 import { Footer } from '@/components/footer'
+import { FAQ } from '@/components/faq'
+import { StructuredData } from '@/components/structured-data'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-white to-yellow-50">
+    <div className="min-h-screen hero-bg">
+      <StructuredData />
       <Header />
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-16 overflow-hidden">
-          {/* Background decorative shapes */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-10 w-32 h-32 bg-yellow-400 rounded-full opacity-80"></div>
-            <div className="absolute top-10 right-20 w-48 h-48 bg-purple-400 rounded-[2rem] opacity-20 transform rotate-12"></div>
-            <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-pink-400 rounded-full opacity-60"></div>
-            <div className="absolute top-1/2 right-10 w-16 h-16 bg-blue-400 rounded-full opacity-70"></div>
-          </div>
-          
-          <div className="container mx-auto px-4 relative z-10">
+        <section className="relative py-12 md:py-16">
+          <div className="container-style">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                The best place to
-                <br />
-                <span className="text-purple-600">convert</span> and{' '}
-                <span className="text-yellow-500 underline decoration-wavy decoration-yellow-400">download</span>
-                <br />
-                for music lovers
-              </h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                Convert YouTube videos to high-quality MP3 audio files
-                instantly and safely with our free online converter.
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight" style={{ color: 'var(--foreground)' }}>
+                Free YouTube to MP3 Converter
+              </h2>
+              <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--muted)' }}>
+                Convert YouTube videos to MP3 instantly. Our free YouTube to MP3 converter provides high-quality MP3 downloads from any YouTube video.
               </p>
             </div>
             
             {/* Converter Component */}
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-4xl mx-auto mb-10">
               <Converter />
+            </div>
+
+            {/* Feature badges */}
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+              <div className="flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--muted)' }}>
+                <svg className="w-4 h-4" style={{ color: 'var(--success)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Free and Unlimited
+              </div>
+              <div className="flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--muted)' }}>
+                <svg className="w-4 h-4" style={{ color: 'var(--success)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                No Registration Required
+              </div>
+              <div className="flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--muted)' }}>
+                <svg className="w-4 h-4" style={{ color: 'var(--success)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Fast Conversion
+              </div>
+              <div className="flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--muted)' }}>
+                <svg className="w-4 h-4" style={{ color: 'var(--success)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                High Quality MP3
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <Features />
-
         {/* Instructions Section */}
         <Instructions />
 
-        {/* Blog Section */}
-        <BlogSection />
+        {/* FAQ Section */}
+        <FAQ />
       </main>
 
       <Footer />

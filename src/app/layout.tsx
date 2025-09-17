@@ -8,17 +8,30 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ConvertKids - YouTube to MP3 Converter",
-  description: "The fastest and safest YouTube to MP3 converter online. Free to use, no registration required, high-quality audio conversion.",
-  keywords: "YouTube, MP3, converter, online tool, audio download, video to audio",
-  authors: [{ name: "ConvertKids Team" }],
+  title: "YouTube to MP3 - Free YouTube to MP3 Converter",
+  description: "Free YouTube to MP3 Converter - Convert YouTube videos to MP3 online. Fast, safe, and high-quality YouTube to MP3 conversion. No registration required.",
+  authors: [{ name: "YouTube to MP3" }],
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
+  alternates: {
+    canonical: "https://www.youtubetomp3.art",
+  },
   openGraph: {
-    title: "ConvertKids - YouTube to MP3 Converter",
-    description: "The fastest and safest YouTube to MP3 converter online",
+    title: "YouTube to MP3 - Free YouTube to MP3 Converter",
+    description: "Free YouTube to MP3 Converter - Convert YouTube videos to MP3 online instantly",
+    url: "https://www.youtubetomp3.art",
+    siteName: "YouTube to MP3",
     type: "website",
     locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "YouTube to MP3 - Free YouTube to MP3 Converter",
+    description: "Free YouTube to MP3 Converter - Convert YouTube videos to MP3 online instantly",
+  },
+  manifest: "/manifest.json",
+  other: {
+    "google-site-verification": "your-google-verification-code",
   },
 };
 

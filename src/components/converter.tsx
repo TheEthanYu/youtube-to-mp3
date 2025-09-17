@@ -116,42 +116,57 @@ export function Converter() {
   }
 
   return (
-    <Card className="w-full max-w-lg mx-auto bg-white rounded-3xl shadow-xl border-0 overflow-hidden">
-      <CardContent className="p-8">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Insert a valid video URL
-          </h2>
-        </div>
+    <div className="card-style p-6 md:p-8 max-w-3xl mx-auto shadow-lg">
+      <div className="text-center mb-6">
+        <h3 className="text-lg md:text-xl font-semibold mb-2" style={{ color: 'var(--foreground)' }}>
+          Insert YouTube URL
+        </h3>
+      </div>
 
         {/* URL Input */}
         <div className="space-y-4">
-          <div className="relative">
-            <Input
-              type="url"
-              placeholder="youtube.com/watch?v=j0u7ub3-ur1"
-              value={url}
-              onChange={handleUrlChange}
-              className={`h-14 text-lg rounded-2xl border-2 ${
-                isUrlValid === false 
-                  ? 'border-red-300 focus-visible:ring-red-500' 
-                  : isUrlValid === true 
-                  ? 'border-green-300 focus-visible:ring-green-500'
-                  : 'border-gray-200'
-              } focus-visible:ring-2 focus-visible:ring-offset-0`}
-              disabled={conversion.status === 'loading'}
-            />
-            {isUrlValid !== null && (
-              <div className="absolute right-4 top-1/2 -translate-y-1/2">
-                {isUrlValid ? (
-                  <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                ) : (
-                  <AlertCircle className="h-5 w-5 text-red-500" />
-                )}
-              </div>
-            )}
+          <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3 p-4 md:p-5 border-2 rounded-xl transition-all duration-200 hover:border-emerald-300" style={{ borderColor: isUrlValid === false ? '#ef4444' : isUrlValid === true ? '#10b981' : 'var(--border)', background: 'var(--card)' }}>
+            <div className="flex items-center gap-3 flex-1">
+              <svg className="w-8 h-8 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <Input
+                type="url"
+                placeholder="youtube.com/watch?v=example"
+                value={url}
+                onChange={handleUrlChange}
+                className="flex-1 border-0 text-base md:text-lg bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-400"
+                style={{ color: 'var(--foreground)' }}
+                disabled={conversion.status === 'loading'}
+              />
+              {isUrlValid !== null && (
+                <div className="flex-shrink-0">
+                  {isUrlValid ? (
+                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <AlertCircle className="h-5 w-5 text-red-500" />
+                  )}
+                </div>
+              )}
+            </div>
+            <Button
+              onClick={handleConvert}
+              disabled={!isUrlValid || conversion.status === 'loading'}
+              className="btn-primary min-w-[140px] h-12 text-base font-semibold"
+            >
+              {conversion.status === 'loading' ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Converting...
+                </>
+              ) : (
+                'Convert'
+              )}
+            </Button>
           </div>
-          
+
           {isUrlValid === false && (
             <p className="text-sm text-red-500 flex items-center gap-2">
               <AlertCircle className="h-4 w-4" />
@@ -160,28 +175,21 @@ export function Converter() {
           )}
         </div>
 
-        {/* MP3 Label */}
-        <div className="flex justify-center my-6">
-          <div className="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">
-            <Music className="h-4 w-4 inline mr-2" />
-            MP3
-          </div>
-        </div>
 
         {/* Conversion Progress */}
         {conversion.status === 'loading' && (
-          <div className="space-y-4 mb-6">
-            <div className="flex items-center justify-center space-x-2 text-purple-600">
+          <div className="space-y-4 p-6 bg-emerald-50 rounded-xl border border-emerald-200">
+            <div className="flex items-center justify-center space-x-2" style={{ color: 'var(--primary)' }}>
               <Loader2 className="h-5 w-5 animate-spin" />
-              <span className="text-sm font-medium">Converting...</span>
+              <span className="text-sm font-medium">Converting your video...</span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-3">
-              <div 
-                className="bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full transition-all duration-500"
+            <div className="w-full bg-emerald-200 rounded-full h-3">
+              <div
+                className="bg-gradient-to-r from-emerald-500 to-emerald-600 h-3 rounded-full transition-all duration-500"
                 style={{ width: `${conversion.progress}%` }}
               ></div>
             </div>
-            <p className="text-center text-sm text-gray-600">
+            <p className="text-center text-sm" style={{ color: 'var(--muted)' }}>
               {conversion.progress}% completed
             </p>
           </div>
@@ -189,34 +197,34 @@ export function Converter() {
 
         {/* Success State */}
         {conversion.status === 'success' && (
-          <div className="text-center space-y-4 mb-6">
-            <div className="bg-green-50 p-6 rounded-2xl">
-              <div className="flex justify-center mb-3">
+          <div className="text-center space-y-4">
+            <div className="bg-green-50 p-6 rounded-xl border border-green-200">
+              <div className="flex justify-center mb-4">
                 <div className="p-3 bg-green-100 rounded-full">
                   <Download className="h-6 w-6 text-green-600" />
                 </div>
               </div>
-              <div className="mb-4">
-                <h3 className="font-semibold text-green-900 mb-1">Conversion Complete!</h3>
-                <p className="text-sm text-green-700 break-all">
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-green-900 mb-2">Conversion Complete!</h3>
+                <p className="text-sm text-green-700 break-all mb-2">
                   {conversion.videoTitle}
                 </p>
                 {conversion.fileSize && (
-                  <p className="text-xs text-green-600 mt-1">
-                    Size: {conversion.fileSize}
+                  <p className="text-xs text-green-600">
+                    File size: {conversion.fileSize}
                   </p>
                 )}
               </div>
-              <div className="flex gap-3 justify-center">
-                <Button 
-                  onClick={handleDownload} 
-                  className="bg-green-600 hover:bg-green-700 rounded-xl px-6"
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button
+                  onClick={handleDownload}
+                  className="btn-primary px-8 py-3 font-semibold"
                 >
                   <Download className="h-4 w-4 mr-2" />
-                  Download
+                  Download MP3
                 </Button>
-                <Button onClick={resetConverter} variant="outline" className="rounded-xl">
-                  Convert New
+                <Button onClick={resetConverter} variant="outline" className="px-6 py-3 rounded-xl font-medium border-emerald-300 text-emerald-700 hover:bg-emerald-50">
+                  Convert Another
                 </Button>
               </div>
             </div>
@@ -225,46 +233,26 @@ export function Converter() {
 
         {/* Error State */}
         {conversion.status === 'error' && (
-          <div className="text-center space-y-4 mb-6">
-            <div className="bg-red-50 p-6 rounded-2xl">
-              <div className="flex justify-center mb-3">
+          <div className="text-center space-y-4">
+            <div className="bg-red-50 p-6 rounded-xl border border-red-200">
+              <div className="flex justify-center mb-4">
                 <div className="p-3 bg-red-100 rounded-full">
                   <AlertCircle className="h-6 w-6 text-red-600" />
                 </div>
               </div>
-              <div className="mb-4">
-                <h3 className="font-semibold text-red-900 mb-1">Conversion Failed</h3>
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-red-900 mb-2">Conversion Failed</h3>
                 <p className="text-sm text-red-700">
                   {conversion.errorMessage}
                 </p>
               </div>
-              <Button onClick={resetConverter} variant="outline" className="rounded-xl">
+              <Button onClick={resetConverter} className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold">
                 Try Again
               </Button>
             </div>
           </div>
         )}
 
-        {/* Convert Button */}
-        {conversion.status === 'idle' && (
-          <Button 
-            onClick={handleConvert}
-            disabled={!isUrlValid || conversion.status === 'loading'}
-            className="w-full h-14 bg-gray-900 hover:bg-gray-800 text-white rounded-2xl text-lg font-medium"
-          >
-            {conversion.status === 'loading' ? (
-              <>
-                <Loader2 className="h-5 w-5 mr-2 animate-spin" />
-                Converting...
-              </>
-            ) : (
-              <>
-                Convert
-              </>
-            )}
-          </Button>
-        )}
-      </CardContent>
-    </Card>
+    </div>
   )
 }

@@ -1,108 +1,72 @@
-import { Copy, Download, Music, Search } from 'lucide-react'
+'use client'
 
-const steps = [
-  {
-    icon: Search,
-    title: 'Find Video',
-    description: 'Search for your favorite YouTube video',
-    detail: 'Go to YouTube.com and find the music video or content you want to convert'
-  },
-  {
-    icon: Copy,
-    title: 'Copy URL',
-    description: 'Copy the video URL from address bar',
-    detail: 'Click on the address bar or share button to copy the complete video link'
-  },
-  {
-    icon: Music,
-    title: 'Convert',
-    description: 'Paste link and start conversion',
-    detail: 'Paste the link in the input box above and click the convert button'
-  },
-  {
-    icon: Download,
-    title: 'Download',
-    description: 'Download your converted MP3 file',
-    detail: 'Once conversion is complete, click download to get your high-quality audio file'
-  }
-]
+import { Copy, ArrowRight, Download } from 'lucide-react'
 
 export function Instructions() {
   return (
-    <section className="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
-      <div className="container mx-auto px-4">
+    <section className="section-spacing section-white">
+      <div className="container-style">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            How to convert YouTube to MP3?
+          <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>
+            How to Use Our YouTube to MP3 Converter
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Just 4 simple steps to convert any YouTube video to high-quality MP3 audio
+          <p className="text-base max-w-2xl mx-auto" style={{ color: 'var(--muted)' }}>
+            Convert YouTube to MP3 in 3 simple steps with our free YouTube to MP3 converter.
           </p>
         </div>
-
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon
-              return (
-                <div key={index} className="text-center group relative">
-                  {/* Step Number */}
-                  <div className="relative mb-6">
-                    <div className="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="h-8 w-8 text-white" />
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 text-gray-900 rounded-full flex items-center justify-center text-sm font-bold">
-                      {index + 1}
-                    </div>
-                  </div>
-
-                  {/* Step Content */}
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-semibold text-gray-900 group-hover:text-purple-600 transition-colors">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600 font-medium">
-                      {step.description}
-                    </p>
-                    <p className="text-sm text-gray-500 leading-relaxed">
-                      {step.detail}
-                    </p>
-                  </div>
-
-                  {/* Connection Line */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-purple-200 to-purple-300 transform translate-x-4" />
-                  )}
-                </div>
-              )
-            })}
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="text-center">
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ background: 'linear-gradient(135deg, #10b981, #059669)' }}>
+              <Copy className="h-8 w-8 text-white" />
+            </div>
+            <div className="bg-emerald-50 rounded-xl p-6 border border-emerald-100">
+              <h3 className="text-lg font-semibold mb-3" style={{ color: 'var(--foreground)' }}>
+                1. Copy YouTube URL
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+                Copy the YouTube video URL that you want to convert to MP3 format.
+              </p>
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ background: 'linear-gradient(135deg, #10b981, #059669)' }}>
+              <ArrowRight className="h-8 w-8 text-white" />
+            </div>
+            <div className="bg-emerald-50 rounded-xl p-6 border border-emerald-100">
+              <h3 className="text-lg font-semibold mb-3" style={{ color: 'var(--foreground)' }}>
+                2. Paste URL & Convert
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+                Paste the YouTube URL into our converter above and click the Convert button.
+              </p>
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ background: 'linear-gradient(135deg, #10b981, #059669)' }}>
+              <Download className="h-8 w-8 text-white" />
+            </div>
+            <div className="bg-emerald-50 rounded-xl p-6 border border-emerald-100">
+              <h3 className="text-lg font-semibold mb-3" style={{ color: 'var(--foreground)' }}>
+                3. Download MP3
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+                Download your high-quality MP3 file instantly and enjoy offline listening.
+              </p>
+            </div>
           </div>
         </div>
-
-        {/* Additional Tips */}
-        <div className="mt-16 max-w-3xl mx-auto">
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-purple-100">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-              💡 Tips & Information
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
-              <div>
-                <h4 className="font-semibold mb-3 text-purple-600">✅ Supported URL formats:</h4>
-                <ul className="text-sm space-y-2">
-                  <li>• https://youtube.com/watch?v=...</li>
-                  <li>• https://youtu.be/...</li>
-                  <li>• https://m.youtube.com/watch?v=...</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-3 text-purple-600">🎵 Output quality:</h4>
-                <ul className="text-sm space-y-2">
-                  <li>• High-quality MP3 format</li>
-                  <li>• Up to 320kbps audio quality</li>
-                  <li>• Fast conversion process</li>
-                </ul>
-              </div>
-            </div>
+        
+        <div className="text-center mt-10">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-emerald-200 bg-emerald-50">
+            <svg className="w-5 h-5" style={{ color: 'var(--success)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span className="text-sm font-medium" style={{ color: 'var(--success)' }}>
+              No software installation required - 100% online YouTube to MP3 converter
+            </span>
           </div>
         </div>
       </div>
