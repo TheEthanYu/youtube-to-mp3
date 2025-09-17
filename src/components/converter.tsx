@@ -26,16 +26,17 @@ export function Converter() {
   })
 
   // Debounced URL validation
-  const validateUrl = useCallback(
-    debounce((inputUrl: string) => {
-      if (inputUrl.trim() === '') {
+  const validateUrl = useCallback((inputUrl: string) => {
+    const debouncedValidation = debounce((url: string) => {
+      if (url.trim() === '') {
         setIsUrlValid(null)
         return
       }
-      setIsUrlValid(isValidYouTubeUrl(inputUrl))
-    }, 500),
-    []
-  )
+      setIsUrlValid(isValidYouTubeUrl(url))
+    }, 500)
+    
+    debouncedValidation(inputUrl)
+  }, [])
 
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = e.target.value
