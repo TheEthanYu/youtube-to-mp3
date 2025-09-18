@@ -17,6 +17,15 @@ interface ConversionState {
   duration?: string
 }
 
+// 短链接广告平台配置
+const MONETIZATION_CONFIG = {
+  // ouo.io 配置
+  ouoBase: 'http://ouo.io/qs/0RVf1nv4?s=',
+  // 你可以在这里添加其他平台的配置
+  // adflyBase: 'https://adf.ly/your-id/',
+  // linkvertiseBase: 'https://linkvertise.com/your-id/',
+}
+
 export function Converter() {
   const [url, setUrl] = useState('')
   const [isUrlValid, setIsUrlValid] = useState<boolean | null>(null)
@@ -104,8 +113,22 @@ export function Converter() {
   }
 
   const handleDownload = () => {
+    console.log('下载按钮被点击')
+    console.log('downloadUrl:', conversion.downloadUrl)
+    
     if (conversion.downloadUrl) {
-      window.open(conversion.downloadUrl, '_blank')
+      // 使用 ouo.io 短链接广告平台进行变现
+      const monetizedUrl = MONETIZATION_CONFIG.ouoBase + encodeURIComponent(conversion.downloadUrl)
+      
+      console.log('通过ouo.io跳转到下载链接:', monetizedUrl)
+      
+      // 在新标签页打开 ouo.io 链接，用户会先看到广告，然后才能下载
+      window.open(monetizedUrl, '_blank')
+      
+      console.log('下载链接已通过ouo.io处理')
+    } else {
+      console.error('没有可用的下载链接')
+      alert('下载链接不可用，请重新转换')
     }
   }
 

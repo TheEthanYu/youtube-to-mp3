@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "YouTube to MP3",
+  title: "YouTube to MP3 - Free YouTube to MP3 converter",
   description: "Free YouTube to MP3 converter - Transform YouTube videos into high-quality MP3 files instantly. No registration, unlimited downloads, 320kbps audio quality.",
   authors: [{ name: "YouTube to MP3" }],
   robots: "index, follow",
