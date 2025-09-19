@@ -4,7 +4,7 @@ import { Copy, ArrowRight, Download } from 'lucide-react'
 
 export function Instructions() {
   return (
-    <section className="section-spacing section-white">
+    <section id="how-to-use" className="section-spacing section-white">
       <div className="container-style">
         <div className="text-center mb-12">
           <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>

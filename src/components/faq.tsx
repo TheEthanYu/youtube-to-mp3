@@ -30,7 +30,7 @@ export function FAQ() {
   }
 
   return (
-    <section className="py-16 bg-white">
+    <section id="faq" className="py-16 bg-white">
       <div className="container-style">
         <div className="text-center mb-10">
           <h2 className="text-xl md:text-2xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>

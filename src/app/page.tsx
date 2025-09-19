@@ -3,11 +3,13 @@ import { Instructions } from '@/components/instructions'
 import { Footer } from '@/components/footer'
 import { FAQ } from '@/components/faq'
 import { StructuredData } from '@/components/structured-data'
+import { Header } from '@/components/header'
 
 export default function Home() {
   return (
     <div className="min-h-screen hero-bg">
       <StructuredData />
+      <Header />
       
       <main className="flex-1">
         {/* Hero Section */}
