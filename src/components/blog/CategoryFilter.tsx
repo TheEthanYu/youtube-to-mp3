@@ -1,7 +1,7 @@
 'use client'
 
 import { Category } from '@/lib/content-api'
-import { Tag, X } from 'lucide-react'
+import { X } from 'lucide-react'
 
 interface CategoryFilterProps {
   categories: Category[]

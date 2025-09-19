@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { contentAPI } from '@/lib/content-api'
+import { contentAPI, Article } from '@/lib/content-api'
 import { ArticleContent } from '@/components/blog/ArticleContent'
 import { RelatedArticles } from '@/components/blog/RelatedArticles'
 import { ArticleSEO } from '@/components/blog/ArticleSEO'
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   let article = null
-  let relatedArticles = []
+  let relatedArticles: Article[] = []
 
   try {
     // 获取文章详情
@@ -169,7 +169,7 @@ export async function generateStaticParams() {
     
     const articles = response.data?.articles || []
     
-    return articles.map((article: any) => ({
+    return articles.map((article) => ({
       slug: article.slug
     }))
   } catch (error) {

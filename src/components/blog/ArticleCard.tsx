@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Article } from '@/lib/content-api'
-import { Calendar, Eye, Tag } from 'lucide-react'
+import { Calendar, Eye } from 'lucide-react'
 
 interface ArticleCardProps {
   article: Article

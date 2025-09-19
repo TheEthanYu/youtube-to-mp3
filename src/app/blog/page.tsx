@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import { BlogList } from '@/components/blog/BlogList'
-import { contentAPI } from '@/lib/content-api'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
+import { contentAPI, Article, Category } from '@/lib/content-api'
 
 export const metadata: Metadata = {
   title: 'YouTube to MP3 Converter - Tutorials & Guides',
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  let articles = []
-  let categories = []
+  let articles: Article[] = []
+  let categories: Category[] = []
 
   try {
     // 并行获取文章列表和分类数据

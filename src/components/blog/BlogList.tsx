@@ -1,9 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { ArticleCard } from './ArticleCard'
 import { CategoryFilter } from './CategoryFilter'
-import { LoadingSpinner } from '../ui/LoadingSpinner'
 import { contentAPI, Article, Category } from '@/lib/content-api'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
