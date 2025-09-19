@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   description: "Free YouTube to MP3 converter - Transform YouTube videos into high-quality MP3 files instantly. No registration, unlimited downloads, 320kbps audio quality.",
   authors: [{ name: "YouTube to MP3" }],
   robots: "index, follow",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
   alternates: {
     canonical: "https://www.youtubetomp3.art",
   },
