@@ -13,29 +13,21 @@ export function CategoryFilter({ categories, selectedCategory, onCategoryChange 
   const selectedCategoryData = categories.find(cat => cat.slug === selectedCategory)
 
   return (
-    <div className="mb-12">
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-lg">
-            <Tag className="w-5 h-5 text-white" />
-          </div>
-          <h3 className="text-xl font-bold text-slate-900">Browse by Category</h3>
-        </div>
+    <div className="mb-10">
+      <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+        <h3 className="text-sm font-medium text-gray-900 mb-4">Filter by Category</h3>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2">
           {/* All categories button */}
           <button
             onClick={() => onCategoryChange('')}
-            className={`group relative px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
+            className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
               selectedCategory === ''
-                ? 'bg-gradient-to-r from-emerald-600 to-blue-600 text-white shadow-lg scale-105'
-                : 'bg-slate-100 text-slate-700 hover:bg-slate-200 hover:scale-105'
+                ? 'bg-emerald-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
-            <span className="relative z-10">All Articles</span>
-            {selectedCategory === '' && (
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-xl opacity-20 animate-pulse"></div>
-            )}
+            All Articles
           </button>
 
           {/* Category buttons */}
@@ -43,26 +35,19 @@ export function CategoryFilter({ categories, selectedCategory, onCategoryChange 
             <button
               key={category.id}
               onClick={() => onCategoryChange(category.slug)}
-              className={`group relative px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105 ${
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                 selectedCategory === category.slug
-                  ? 'text-white shadow-lg scale-105'
-                  : 'text-slate-700 hover:shadow-md'
+                  ? 'text-white'
+                  : 'text-gray-700 hover:opacity-80'
               }`}
               style={{
                 backgroundColor: selectedCategory === category.slug 
                   ? category.color 
-                  : '#f1f5f9',
-                borderColor: category.color,
-                borderWidth: selectedCategory === category.slug ? '0' : '2px'
+                  : `${category.color}15`,
+                color: selectedCategory === category.slug ? 'white' : category.color
               }}
             >
-              <span className="relative z-10">{category.name}</span>
-              {selectedCategory === category.slug && (
-                <div 
-                  className="absolute inset-0 rounded-xl opacity-20 animate-pulse"
-                  style={{ backgroundColor: category.color }}
-                ></div>
-              )}
+              {category.name}
             </button>
           ))}
         </div>
@@ -70,25 +55,25 @@ export function CategoryFilter({ categories, selectedCategory, onCategoryChange 
 
       {/* 当前选中的分类信息 */}
       {selectedCategoryData && (
-        <div className="mt-4 p-4 rounded-lg border border-gray-200 bg-gray-50">
+        <div className="mt-3 p-3 rounded-md bg-gray-50 border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-medium text-gray-900 mb-1">
+              <span className="text-sm font-medium text-gray-900">
                 {selectedCategoryData.name}
-              </h4>
+              </span>
               {selectedCategoryData.description && (
-                <p className="text-sm text-gray-600">
+                <p className="text-xs text-gray-600 mt-1">
                   {selectedCategoryData.description}
                 </p>
               )}
             </div>
-              <button
-                onClick={() => onCategoryChange('')}
-                className="p-1 rounded-full hover:bg-gray-200 transition-colors"
-                title="Clear filter"
-              >
-                <X className="w-4 h-4 text-gray-500" />
-              </button>
+            <button
+              onClick={() => onCategoryChange('')}
+              className="p-1 rounded-full hover:bg-gray-200 transition-colors"
+              title="Clear filter"
+            >
+              <X className="w-3.5 h-3.5 text-gray-500" />
+            </button>
           </div>
         </div>
       )}

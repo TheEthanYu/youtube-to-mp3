@@ -11,7 +11,7 @@ interface ArticleContentProps {
 
 export function ArticleContent({ article }: ArticleContentProps) {
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('zh-CN', {
+    return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -20,31 +20,31 @@ export function ArticleContent({ article }: ArticleContentProps) {
   }
 
   const formatViewCount = (count: number) => {
-    if (count >= 10000) {
-      return `${(count / 10000).toFixed(1)}万`
+    if (count >= 1000000) {
+      return `${(count / 1000000).toFixed(1)}M`
     }
     if (count >= 1000) {
-      return `${(count / 1000).toFixed(1)}k`
+      return `${(count / 1000).toFixed(1)}K`
     }
     return count.toString()
   }
 
-  // 估算阅读时间 (每分钟250字)
+  // Calculate reading time (250 words per minute)
   const calculateReadingTime = (content: string) => {
     const textContent = content.replace(/<[^>]*>/g, '')
-    const wordCount = textContent.length
+    const wordCount = textContent.split(/\s+/).length
     const readingTime = Math.ceil(wordCount / 250)
     return readingTime
   }
 
-  // 安全地渲染Markdown内容
+  // Safely render Markdown content
   const renderMarkdown = (content: string) => {
     if (typeof window !== 'undefined') {
       const html = marked(content)
       const cleanHtml = DOMPurify.sanitize(html as string)
       return { __html: cleanHtml }
     }
-    // 服务端渲染时的简单处理
+    // Simple handling for server-side rendering
     return { __html: marked(content) as string }
   }
 
@@ -52,15 +52,15 @@ export function ArticleContent({ article }: ArticleContentProps) {
 
   return (
     <article className="prose prose-lg max-w-none">
-      {/* 文章头部 */}
-      <header className="mb-8 not-prose">
-        {/* 分类标签 */}
+      {/* Article header */}
+      <header className="mb-12 not-prose">
+        {/* Category tag */}
         {article.category && (
-          <div className="mb-4">
+          <div className="mb-6">
             <span
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium"
               style={{
-                backgroundColor: `${article.category.color}20`,
+                backgroundColor: `${article.category.color}15`,
                 color: article.category.color
               }}
             >
@@ -70,24 +70,13 @@ export function ArticleContent({ article }: ArticleContentProps) {
           </div>
         )}
 
-        {/* 文章标题 */}
-        <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
+        {/* Article title */}
+        <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8 leading-tight">
           {article.title}
         </h1>
 
-        {/* 特色图片 */}
-        {article.featuredImage && (
-          <div className="mb-8 rounded-xl overflow-hidden">
-            <img
-              src={article.featuredImage}
-              alt={article.title}
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        )}
-
-        {/* 文章元信息 */}
-        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 py-4 border-y border-gray-200">
+        {/* Article metadata */}
+        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 pb-8 border-b border-gray-200">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4" />
             <time dateTime={article.publishedAt}>
@@ -97,33 +86,33 @@ export function ArticleContent({ article }: ArticleContentProps) {
 
           <div className="flex items-center gap-2">
             <Eye className="w-4 h-4" />
-            <span>{formatViewCount(article.viewCount)} 次阅读</span>
+            <span>{formatViewCount(article.viewCount)} views</span>
           </div>
 
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4" />
-            <span>约 {readingTime} 分钟阅读</span>
+            <span>{readingTime} min read</span>
           </div>
         </div>
       </header>
 
-      {/* 文章内容 */}
+      {/* Article content */}
       {article.content && (
         <div 
-          className="prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-a:text-blue-600 hover:prose-a:text-blue-700 prose-blockquote:border-blue-200 prose-blockquote:bg-blue-50 prose-code:bg-gray-100 prose-code:text-gray-800 prose-pre:bg-gray-900"
+          className="prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-a:text-emerald-600 hover:prose-a:text-emerald-700 prose-blockquote:border-gray-200 prose-blockquote:bg-gray-50 prose-code:bg-gray-100 prose-code:text-gray-800 prose-pre:bg-gray-900 mt-8"
           dangerouslySetInnerHTML={renderMarkdown(article.content)}
         />
       )}
 
-      {/* 文章标签 */}
+      {/* Article tags */}
       {article.seoKeywords && (
-        <div className="mt-8 pt-6 border-t border-gray-200 not-prose">
-          <h3 className="text-sm font-medium text-gray-900 mb-3">相关标签</h3>
+        <div className="mt-12 pt-8 border-t border-gray-200 not-prose">
+          <h3 className="text-sm font-medium text-gray-900 mb-4">Tags</h3>
           <div className="flex flex-wrap gap-2">
             {article.seoKeywords.split(',').map((keyword, index) => (
               <span
                 key={index}
-                className="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded-full"
+                className="px-3 py-1.5 text-xs font-medium bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors"
               >
                 {keyword.trim()}
               </span>

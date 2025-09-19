@@ -73,17 +73,9 @@ export function BlogList({ initialArticles, categories, domain }: BlogListProps)
 
       {/* 加载状态 */}
       {loading && (
-        <div className="flex flex-col items-center justify-center py-20">
-          <div className="relative">
-            <div className="w-16 h-16 border-4 border-slate-200 border-t-emerald-600 rounded-full animate-spin"></div>
-            <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-blue-600 rounded-full animate-spin animation-delay-150"></div>
-          </div>
-          <p className="mt-6 text-slate-600 font-medium">Loading articles...</p>
-          <div className="mt-4 flex space-x-1">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce"></div>
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce animation-delay-75"></div>
-            <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce animation-delay-150"></div>
-          </div>
+        <div className="flex flex-col items-center justify-center py-16">
+          <div className="w-8 h-8 border-2 border-gray-200 border-t-emerald-600 rounded-full animate-spin"></div>
+          <p className="mt-4 text-gray-600 text-sm">Loading...</p>
         </div>
       )}
 
@@ -97,17 +89,17 @@ export function BlogList({ initialArticles, categories, domain }: BlogListProps)
               ))}
             </div>
           ) : (
-            <div className="text-center py-20">
+            <div className="text-center py-16">
               <div className="max-w-md mx-auto">
-                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-slate-100 to-slate-200 rounded-full flex items-center justify-center">
-                  <svg className="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {selectedCategory ? 'No articles in this category' : 'No articles found'}
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-gray-600 text-sm">
                   {selectedCategory ? 'Try selecting a different category or check back later.' : 'We\'re working on adding more content. Check back soon!'}
                 </p>
               </div>
@@ -116,18 +108,18 @@ export function BlogList({ initialArticles, categories, domain }: BlogListProps)
 
           {/* 分页器 */}
           {pagination.totalPages > 1 && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20">
-              <div className="flex justify-center items-center space-x-3">
+            <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+              <div className="flex justify-center items-center space-x-2">
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage <= 1}
-                  className="flex items-center px-6 py-3 text-sm font-semibold text-slate-700 bg-white border-2 border-slate-200 rounded-xl hover:bg-slate-50 hover:border-emerald-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 shadow-md"
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
-                  <ChevronLeft className="w-4 h-4 mr-2" />
+                  <ChevronLeft className="w-4 h-4 mr-1" />
                   Previous
                 </button>
 
-                <div className="flex space-x-2">
+                <div className="flex space-x-1">
                   {Array.from({ length: pagination.totalPages }, (_, i) => i + 1)
                     .filter(page => {
                       // 显示当前页面附近的页码
@@ -137,16 +129,16 @@ export function BlogList({ initialArticles, categories, domain }: BlogListProps)
                       // 添加省略号
                       if (index > 0 && page - arr[index - 1] > 1) {
                         return [
-                          <span key={`ellipsis-${page}`} className="px-3 py-3 text-slate-400 font-medium">
+                          <span key={`ellipsis-${page}`} className="px-2 py-2 text-gray-400 text-sm">
                             ...
                           </span>,
                           <button
                             key={page}
                             onClick={() => handlePageChange(page)}
-                            className={`w-12 h-12 text-sm font-bold rounded-xl transition-all duration-200 hover:scale-105 ${
+                            className={`w-8 h-8 text-sm font-medium rounded-md transition-colors ${
                               currentPage === page
-                                ? 'bg-gradient-to-r from-emerald-600 to-blue-600 text-white shadow-lg'
-                                : 'text-slate-700 bg-white border-2 border-slate-200 hover:bg-slate-50 hover:border-emerald-300 shadow-md'
+                                ? 'bg-emerald-600 text-white'
+                                : 'text-gray-700 bg-white border border-gray-300 hover:bg-gray-50'
                             }`}
                           >
                             {page}
@@ -158,10 +150,10 @@ export function BlogList({ initialArticles, categories, domain }: BlogListProps)
                         <button
                           key={page}
                           onClick={() => handlePageChange(page)}
-                          className={`w-12 h-12 text-sm font-bold rounded-xl transition-all duration-200 hover:scale-105 ${
+                          className={`w-8 h-8 text-sm font-medium rounded-md transition-colors ${
                             currentPage === page
-                              ? 'bg-gradient-to-r from-emerald-600 to-blue-600 text-white shadow-lg'
-                              : 'text-slate-700 bg-white border-2 border-slate-200 hover:bg-slate-50 hover:border-emerald-300 shadow-md'
+                              ? 'bg-emerald-600 text-white'
+                              : 'text-gray-700 bg-white border border-gray-300 hover:bg-gray-50'
                           }`}
                         >
                           {page}
@@ -173,15 +165,15 @@ export function BlogList({ initialArticles, categories, domain }: BlogListProps)
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage >= pagination.totalPages}
-                  className="flex items-center px-6 py-3 text-sm font-semibold text-slate-700 bg-white border-2 border-slate-200 rounded-xl hover:bg-slate-50 hover:border-emerald-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 shadow-md"
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   Next
-                  <ChevronRight className="w-4 h-4 ml-2" />
+                  <ChevronRight className="w-4 h-4 ml-1" />
                 </button>
               </div>
               
               {/* 分页信息 */}
-              <div className="text-center mt-4 text-sm text-slate-600">
+              <div className="text-center mt-3 text-xs text-gray-500">
                 Showing {((currentPage - 1) * pagination.limit) + 1} to {Math.min(currentPage * pagination.limit, pagination.total)} of {pagination.total} articles
               </div>
             </div>

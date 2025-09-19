@@ -89,70 +89,68 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       <ArticleSEO article={article} />
       <Header />
       
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
-        <div className="pt-20 lg:pt-24">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
-          {/* 面包屑导航 */}
-          <nav className="mb-8">
-            <ol className="flex items-center space-x-2 text-sm text-gray-600">
-              <li>
-                <Link href="/" className="hover:text-emerald-600">
-                  Home
-                </Link>
-              </li>
-              <li>/</li>
-              <li>
-                <Link href="/blog" className="hover:text-emerald-600">
-                  Blog
-                </Link>
-              </li>
-              {article.category && (
-                <>
-                  <li>/</li>
-                  <li>
-                    <Link 
-                      href={`/blog?category=${article.category.slug}`}
-                      className="hover:text-emerald-600"
-                    >
-                      {article.category.name}
-                    </Link>
-                  </li>
-                </>
-              )}
-              <li>/</li>
-              <li className="text-gray-900 font-medium">
-                {article.title}
-              </li>
-            </ol>
-          </nav>
+      <div className="min-h-screen bg-white">
+        <div className="pt-20 lg:pt-24 pb-16">
+          <div className="max-w-4xl mx-auto px-6 lg:px-8">
+            {/* 面包屑导航 */}
+            <nav className="mb-8 py-4">
+              <ol className="flex items-center space-x-2 text-sm text-gray-500">
+                <li>
+                  <Link href="/" className="hover:text-emerald-600 transition-colors">
+                    Home
+                  </Link>
+                </li>
+                <li>/</li>
+                <li>
+                  <Link href="/blog" className="hover:text-emerald-600 transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                {article.category && (
+                  <>
+                    <li>/</li>
+                    <li>
+                      <Link 
+                        href={`/blog?category=${article.category.slug}`}
+                        className="hover:text-emerald-600 transition-colors"
+                      >
+                        {article.category.name}
+                      </Link>
+                    </li>
+                  </>
+                )}
+                <li>/</li>
+                <li className="text-gray-900 font-medium truncate">
+                  {article.title}
+                </li>
+              </ol>
+            </nav>
 
-            <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl border border-emerald-100 p-8 lg:p-12">
-              {/* 文章主体内容 */}
-              <ArticleContent article={article} />
+            {/* 文章主体内容 */}
+            <ArticleContent article={article} />
 
             {/* CTA引导到转换工具 */}
-            <div className="my-12 p-8 bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl border border-emerald-100">
+            <div className="my-16 p-6 bg-gray-50 rounded-lg border border-gray-200">
               <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   Try Our YouTube to MP3 Converter
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 mb-4 text-sm">
                   Fast, secure, and high-quality audio conversion service
                 </p>
                 <Link 
                   href="/" 
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 inline-flex items-center"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 text-sm font-medium rounded-md transition-colors inline-flex items-center"
                 >
                   Start Converting
                 </Link>
               </div>
             </div>
 
-              {/* 相关文章 */}
-              {relatedArticles.length > 0 && (
-                <RelatedArticles articles={relatedArticles} />
-              )}
-            </div>
+            {/* 相关文章 */}
+            {relatedArticles.length > 0 && (
+              <RelatedArticles articles={relatedArticles} />
+            )}
           </div>
         </div>
         <Footer />
