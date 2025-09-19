@@ -7,7 +7,6 @@ import { contentAPI, Article, Category } from '@/lib/content-api'
 export const metadata: Metadata = {
   title: 'YouTube to MP3 Converter - Tutorials & Guides',
   description: 'Professional YouTube to MP3 conversion tutorials, including the latest conversion tips, format selection guides, and practical content.',
-  keywords: 'YouTube to MP3, audio conversion, download tutorial, online tools',
 }
 
 export default async function BlogPage() {

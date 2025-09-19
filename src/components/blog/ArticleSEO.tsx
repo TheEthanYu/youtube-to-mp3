@@ -32,8 +32,7 @@ export function ArticleSEO({ article }: ArticleSEOProps) {
       '@type': 'WebPage',
       '@id': `${process.env.SITE_URL}/blog/${article.slug}`
     },
-    articleSection: article.category?.name,
-    keywords: article.seoKeywords
+    articleSection: article.category?.name
   }
 
   return (

@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
     return {
       title: article.seoTitle || article.title,
       description: article.seoDescription || article.excerpt,
-      keywords: article.seoKeywords,
       openGraph: {
         title: article.seoTitle || article.title,
         description: article.seoDescription || article.excerpt,
