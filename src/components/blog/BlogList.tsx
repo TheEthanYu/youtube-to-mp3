@@ -83,7 +83,7 @@ export function BlogList({ initialArticles, categories, domain }: BlogListProps)
       {!loading && (
         <>
           {articles.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div className="divide-y divide-gray-100 mb-16">
               {articles.map((article) => (
                 <ArticleCard key={article.id} article={article} />
               ))}
