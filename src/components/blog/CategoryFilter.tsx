@@ -13,17 +13,17 @@ export function CategoryFilter({ categories, selectedCategory, onCategoryChange 
   const selectedCategoryData = categories.find(cat => cat.slug === selectedCategory)
 
   return (
-    <div className="mb-8">
-      <div className="flex flex-wrap items-center gap-3">
-        <span className="text-sm text-gray-600 font-medium">Filter:</span>
+    <div className="mb-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-sm text-gray-500 mr-2">Filter:</span>
         
         {/* All categories button */}
         <button
           onClick={() => onCategoryChange('')}
-          className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
             selectedCategory === ''
-              ? 'bg-emerald-600 text-white shadow-sm'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? 'bg-gray-900 text-white shadow-sm'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
           }`}
         >
           All Articles
@@ -34,17 +34,11 @@ export function CategoryFilter({ categories, selectedCategory, onCategoryChange 
           <button
             key={category.id}
             onClick={() => onCategoryChange(category.slug)}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
               selectedCategory === category.slug
-                ? 'text-white shadow-sm'
-                : 'hover:scale-105'
+                ? 'bg-gray-900 text-white shadow-sm'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
-            style={{
-              backgroundColor: selectedCategory === category.slug 
-                ? category.color 
-                : `${category.color}10`,
-              color: selectedCategory === category.slug ? 'white' : category.color
-            }}
           >
             {category.name}
           </button>

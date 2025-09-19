@@ -14,7 +14,7 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-12 md:py-16">
-          <div className="container-style">
+          <div className="pt-16 pb-8">
             <div className="text-center mb-8">
               <h1 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>
                 YouTube to MP3

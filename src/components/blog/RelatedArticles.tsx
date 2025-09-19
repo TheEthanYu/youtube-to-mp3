@@ -33,17 +33,8 @@ function RelatedArticleCard({ article }: { article: Article }) {
       {/* 分类标签 */}
       {article.category && (
         <div className="mb-3">
-          <span
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
-            style={{
-              backgroundColor: `${article.category.color}10`,
-              color: article.category.color,
-            }}
-          >
-            <div 
-              className="w-1.5 h-1.5 rounded-full"
-              style={{ backgroundColor: article.category.color }}
-            ></div>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+            <div className="w-1.5 h-1.5 rounded-full bg-gray-400"></div>
             {article.category.name}
           </span>
         </div>

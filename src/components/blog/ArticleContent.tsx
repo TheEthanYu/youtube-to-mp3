@@ -57,13 +57,7 @@ export function ArticleContent({ article }: ArticleContentProps) {
         {/* Category tag */}
         {article.category && (
           <div className="mb-6">
-            <span
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium"
-              style={{
-                backgroundColor: `${article.category.color}15`,
-                color: article.category.color
-              }}
-            >
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-600">
               <Tag className="w-3 h-3" />
               {article.category.name}
             </span>

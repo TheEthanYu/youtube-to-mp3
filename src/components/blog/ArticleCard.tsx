@@ -27,7 +27,7 @@ export function ArticleCard({ article, showCategory = true, className = '' }: Ar
   }
 
   return (
-    <article className={`group hover:bg-gray-50 transition-colors duration-200 py-8 first:pt-0 ${className}`}>
+    <article className={`group transition-colors duration-200 py-10 first:pt-8 ${className}`}>
       {/* 文章内容区域 */}
       <div className="flex flex-col">
         {/* 分类标签 */}
@@ -35,16 +35,9 @@ export function ArticleCard({ article, showCategory = true, className = '' }: Ar
           <div className="mb-3">
             <Link
               href={`/blog?category=${article.category.slug}`}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium transition-colors"
-              style={{
-                backgroundColor: `${article.category.color}10`,
-                color: article.category.color,
-              }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
             >
-              <div 
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: article.category.color }}
-              ></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-400"></div>
               {article.category.name}
             </Link>
           </div>
